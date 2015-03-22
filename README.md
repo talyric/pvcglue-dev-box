@@ -6,7 +6,7 @@ You have been warned.  :)
 
 ## Introduction
 
-This project automates the setup of a development environment for working on pvcglue. Use this virtual machine to work on a pull request with everything ready run the test suites.
+This project automates the setup of a development environment for working on pvcglue. Use these virtual machine to work on a pull request with everything ready run the test suites.
 
 ## Requirements
 
@@ -27,10 +27,10 @@ After the installation has finished, you can access the virtual machine with
     ...
     vagrant@pvcglue-dev-box:~$
 
-## Virtual Machines (not yet implemented)
+## Virtual Machines
 
-* pvc_manager
-* web_1
+* manager
+* web
 * web_2
 * lb
 * db

@@ -68,4 +68,19 @@ Vagrant.configure(2) do |config|
   #   sudo apt-get update
   #   sudo apt-get install -y apache2
   # SHELL
+  config.vm.network "public_network"
+  config.vm.network "private_network", type: "dhcp"
+
+  config.vm.define "web", primary: true do |machine|
+  end
+  config.vm.define "web_2" do |machine|
+  end
+  config.vm.define "db" do |machine|
+  end
+  config.vm.define "lb" do |machine|
+  end
+  config.vm.define "memcached" do |machine|
+  end
+  config.vm.define "manager" do |machine|
+  end
 end
