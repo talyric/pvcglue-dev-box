@@ -1,5 +1,7 @@
-PATH
-  remote: c:/Sites/pvcglue
+GIT
+  remote: git://github.com/talyric/pvcglue.git
+  revision: e0e53f66918c61a805bb4c2cf5840be673112f16
+  branch: master
   specs:
     pvcglue (0.1.16)
       capistrano (~> 3.1.0, >= 3.1.0)
@@ -99,6 +101,7 @@ GEM
       net-ssh
       thor
       tilt
+    pg (0.18.1)
     pg (0.18.1-x86-mingw32)
     pvcglue_dbutils (0.5.3)
     rack (1.5.2)
@@ -159,6 +162,7 @@ GEM
       json (>= 1.8.0)
 
 PLATFORMS
+  ruby
   x86-mingw32
 
 DEPENDENCIES
@@ -167,7 +171,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
-  pvcglue!
+  pvcglue (~> 0.1.16)!
   pvcglue_dbutils (~> 0.5.3)
   rails (= 4.1.8)
   sass-rails (~> 4.0.3)
