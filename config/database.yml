@@ -25,33 +25,33 @@ server_common: &default_settings
 
 development:
   <<: *default_settings
-  database: <%= ['store_dev', ENV['DB_USER_POSTGRES_DISABLE_BRANCHES'] == 'true' ? nil : `git rev-parse --abbrev-ref HEAD`.strip].compact.join('_').downcase %>
+  database: <%= ['pvcglue_dev_box_dev', ENV['DB_USER_POSTGRES_DISABLE_BRANCHES'] == 'true' ? nil : `git rev-parse --abbrev-ref HEAD`.strip].compact.join('_').downcase %>
 
 test:
   <<: *default_settings
-  database: <%= ['store_test', ENV['DB_USER_POSTGRES_DISABLE_BRANCHES'] == 'true' ? nil : `git rev-parse --abbrev-ref HEAD`.strip].compact.join('_').downcase %>
+  database: <%= ['pvcglue_dev_box_test', ENV['DB_USER_POSTGRES_DISABLE_BRANCHES'] == 'true' ? nil : `git rev-parse --abbrev-ref HEAD`.strip].compact.join('_').downcase %>
 
 
 alpha:
   <<: *default_settings
-  database: store_alpha
+  database: pvcglue_dev_box_alpha
 
 beta:
   <<: *default_settings
-  database: store_beta
+  database: pvcglue_dev_box_beta
 
 gamma:
   <<: *default_settings
-  database: store_gamma
+  database: pvcglue_dev_box_gamma
 
 delta:
   <<: *default_settings
-  database: store_delta
+  database: pvcglue_dev_box_delta
 
 preview:
   <<: *default_settings
-  database: store_preview
+  database: pvcglue_dev_box_preview
 
 production:
   <<: *default_settings
-  database: store_production
+  database: pvcglue_dev_box_production
