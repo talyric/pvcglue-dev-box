@@ -55,3 +55,7 @@ preview:
 production:
   <<: *default_settings
   database: pvcglue_dev_box_production
+
+local:
+  <<: *default_settings
+  database: pvcglue_dev_box_local
