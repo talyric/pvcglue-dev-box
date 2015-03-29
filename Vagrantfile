@@ -53,6 +53,9 @@ Vagrant.configure(2) do |config|
   config.vm.network "public_network"
   config.vm.network "private_network", type: "dhcp"
 
+  config.vm.define "manager", autostart: false do |machine|
+  end
+
   config.vm.define "local-web", primary: true, autostart: false do |machine|
   end
   config.vm.define "local-web_2", autostart: false do |machine|
@@ -62,8 +65,6 @@ Vagrant.configure(2) do |config|
   config.vm.define "local-lb", autostart: false do |machine|
   end
   config.vm.define "local-memcached", autostart: false do |machine|
-  end
-  config.vm.define "local-manager", autostart: false do |machine|
   end
 
   config.vm.define "test-web", autostart: false do |machine|
@@ -76,6 +77,7 @@ Vagrant.configure(2) do |config|
   end
   config.vm.define "test-memcached", autostart: false do |machine|
   end
-  config.vm.define "test-manager", autostart: false do |machine|
-  end
+  # pvcglue was only designed for 1 cloud manager...may want to refactor later.
+  # config.vm.define "test-manager", autostart: false do |machine|
+  # end
 end

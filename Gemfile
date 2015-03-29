@@ -54,3 +54,8 @@ gem 'pvcglue', '~> 0.1.16', :github => 'talyric/pvcglue', :branch => 'master', :
 # gem 'pvcglue', :path => "c:/Sites/pvcglue"
 gem 'pvcglue_dbutils', '~> 0.5.3'
 # gem 'pvcglue_dbutils', "~> 0.5.2", :github => 'talyric/pvcglue_dbutils', :branch => 'master' # must be available in all environments
+
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0'
+  gem "capybara"
+end
