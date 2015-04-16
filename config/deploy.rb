@@ -9,6 +9,20 @@ set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
 
 set :bundle_flags, '--deployment' # Remove the `--quiet` flag
 
+# Thanks to marinosbern!
+# From http://stackoverflow.com/a/22234123/444774
+# Example usage: cap staging invoke[db:migrate]
+desc 'Invoke a rake command on the remote server'
+task :invoke, [:command] => 'deploy:set_rails_env' do |task, args|
+  on primary(:app) do
+    within current_path do
+      with :rails_env => fetch(:rails_env) do
+        rake args[:command]
+      end
+    end
+  end
+end
+
 namespace :deploy do
 
   desc 'Restart passenger app'
@@ -16,20 +30,6 @@ namespace :deploy do
     on roles(:app), in: :sequence, wait: 5 do
       execute :touch, release_path.join('tmp/restart.txt')
       #invoke 'delayed_job_restart'
-    end
-  end
-
-  # Thanks to marinosbern!
-  # From http://stackoverflow.com/a/22234123/444774
-  # Example usage: cap staging invoke[db:migrate]
-  desc 'Invoke a rake command on the remote server'
-  task :invoke, [:command] => 'deploy:set_rails_env' do |task, args|
-    on primary(:app) do
-      within current_path do
-        with :rails_env => fetch(:rails_env) do
-          rake args[:command]
-        end
-      end
     end
   end
 
