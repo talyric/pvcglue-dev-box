@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/talyric/pvcglue.git
-  revision: 351b96f58cb651e65b31f9c3fa074f6a289c76c7
+  revision: 9377ca03dbf0299984f21288440ea994e7b496db
   branch: master
   specs:
-    pvcglue (0.1.16)
+    pvcglue (0.1.17)
       capistrano (~> 3.1.0, >= 3.1.0)
       capistrano-bundler (~> 1.1, >= 1.1.1)
       capistrano-rails (~> 1.1, >= 1.1.1)
@@ -203,7 +203,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   pg
-  pvcglue (~> 0.1.16)!
+  pvcglue (~> 0.1.17)!
   pvcglue_dbutils (~> 0.5.3)
   rails (= 4.1.8)
   rspec-rails (~> 3.0)

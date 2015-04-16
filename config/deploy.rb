@@ -19,6 +19,20 @@ namespace :deploy do
     end
   end
 
+  # Thanks to marinosbern!
+  # From http://stackoverflow.com/a/22234123/444774
+  # Example usage: cap staging invoke[db:migrate]
+  desc 'Invoke a rake command on the remote server'
+  task :invoke, [:command] => 'deploy:set_rails_env' do |task, args|
+    on primary(:app) do
+      within current_path do
+        with :rails_env => fetch(:rails_env) do
+          rake args[:command]
+        end
+      end
+    end
+  end
+
   after :publishing, :restart_passenger
 
   after :finishing, 'deploy:cleanup'
