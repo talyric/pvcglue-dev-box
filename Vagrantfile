@@ -58,14 +58,14 @@ Vagrant.configure(2) do |config|
 
   config.vm.define "local-web", primary: true, autostart: false do |machine|
   end
-  config.vm.define "local-web_2", autostart: false do |machine|
-  end
+  # config.vm.define "local-web_2", autostart: false do |machine|
+  # end
   config.vm.define "local-db", autostart: false do |machine|
   end
   config.vm.define "local-lb", autostart: false do |machine|
   end
-  config.vm.define "local-memcached", autostart: false do |machine|
-  end
+  # config.vm.define "local-memcached", autostart: false do |machine|
+  # end
 
   config.vm.define "test-web", autostart: false do |machine|
   end

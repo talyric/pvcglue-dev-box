@@ -11,8 +11,7 @@ set :bundle_flags, '--deployment' # Remove the `--quiet` flag
 
 # Thanks to marinosbern!
 # From http://stackoverflow.com/a/22234123/444774
-# Example usage: cap staging invoke[db:migrate]
-desc 'Invoke a rake command on the remote server'
+desc 'Invoke a rake command on the remote server--Example usage: cap staging invoke[db:migrate]'
 task :invoke, [:command] => 'deploy:set_rails_env' do |task, args|
   on primary(:app) do
     within current_path do
