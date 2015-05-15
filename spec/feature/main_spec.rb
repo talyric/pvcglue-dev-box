@@ -14,6 +14,7 @@ RSpec.describe "main" do
   it "do it on local" do
     expect(system("pvc local start")).to eq true
     expect(system("pvc manager bootstrap")).to eq true
+    expect(system("pvc manager push")).to eq true
     expect(system("pvc local bootstrap")).to eq true
     expect(system("pvc local pvcify")).to eq true
     expect(system("pvc local build")).to eq true
