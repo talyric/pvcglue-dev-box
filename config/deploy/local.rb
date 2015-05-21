@@ -7,7 +7,7 @@ set :linked_files, ['.env.local']
 set :rvm_ruby_version, '2.1.5'
 set :ssh_options, {port: 22222}
 
-server '10.0.10.68', roles: %w{web app db}, user: 'deploy' # server: web_1
+server '192.168.1.49', roles: %w{web app db}, user: 'deploy' # server: web_1
 
 namespace :deploy do
 
