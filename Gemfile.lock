@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/talyric/pvcglue.git
-  revision: e4ce62c496bffca48d64277959d0932efd5b3e9f
+  revision: 25367e7faa014801eaf259f0dda1ab41f0ce9cdf
   branch: master
   specs:
     pvcglue (0.1.22)
