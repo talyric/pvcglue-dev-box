@@ -31,7 +31,7 @@ class Status < ActiveRecord::Base
     start = Time.zone.now
     loop do
       reload
-      break if state == 'complete' || Time.zone.now - start > 30.seconds
+      break if state == 'complete' || Time.zone.now - start > 10.seconds
       # break if state == 'complete' || Time.zone.now - start > 3.seconds
       sleep(1.0/10.0)
     end
