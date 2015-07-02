@@ -7,11 +7,11 @@ set :linked_files, ['.env.local']
 set :rvm_ruby_version, '2.1.5'
 set :ssh_options, {port: 22222}
 
-server '192.168.1.49', roles: %w{web app db}, user: 'deploy' # server: web_1
+server '10.10.10.40', roles: %w{web app db}, user: 'deploy' # server: web_1
 
 namespace :deploy do
-
-  desc 'Runs rake db:migrate if migrations are set'
+  Rake::Task["deploy:migrate"].clear_actions # Don't run migrations...just do the reload.
+  desc 'Overrides db:migrate to just run db:reload'
   task :migrate => [:set_rails_env] do
     on primary fetch(:migration_role) do
       within release_path do
@@ -21,6 +21,4 @@ namespace :deploy do
       end
     end
   end
-
-  after 'deploy:updated', 'deploy:migrate'
 end

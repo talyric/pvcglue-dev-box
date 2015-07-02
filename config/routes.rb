@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'status/dj'
+
+  get 'status/resque'
+
   resources :articles
   root 'articles#index'
   # The priority is based upon order of creation: first created -> highest priority.

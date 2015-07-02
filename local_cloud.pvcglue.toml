@@ -1,49 +1,66 @@
+################################################################################
+#  === pvcglue_dev_box ===
+################################################################################
+
 [pvcglue_dev_box]
-excluded_db_tables = ["versions"]
-name = "pvcglue_dev_box"
-repo_url = "git@github.com:talyric/pvcglue-dev-box.git"
-ssh_allowed_from_all_port = "22222"
-swapfile_size = 128
-time_zone = "America/Los_Angeles"
-[pvcglue_dev_box.authorized_keys]
-example = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
-[pvcglue_dev_box.dev_ip_addresses]
-local = "127.0.0.1"
-user = "192.168.1.204"
-[pvcglue_dev_box.gems]
-delayed_job = false
-whenever = true
-[pvcglue_dev_box.stages.local]
-db_rebuild = true
-domains = ["192.168.1.59"]
-ssl = "none"
-[pvcglue_dev_box.stages.local.roles.db.db]
-private_ip = "172.28.128.5"
-public_ip = "192.168.1.220"
-[pvcglue_dev_box.stages.local.roles.lb.lb]
-allow_public_access = true
-private_ip = "172.28.128.6"
-public_ip = "192.168.1.59"
-[pvcglue_dev_box.stages.local.roles.redis.redis]
-private_ip = "172.28.128.5"
-public_ip = "192.168.1.220"
-[pvcglue_dev_box.stages.local.roles.web.web_1]
-private_ip = "172.28.128.4"
-public_ip = "192.168.1.49"
-[pvcglue_dev_box.stages.test]
-db_rebuild = false
-domains = ["pvcglue_dev_box.test"]
-ssl = "none"
-[pvcglue_dev_box.stages.test.roles.caching.memcached]
-private_ip = "0.0.0.0"
-public_ip = "0.0.0.0"
-[pvcglue_dev_box.stages.test.roles.db.db]
-private_ip = "0.0.0.0"
-public_ip = "0.0.0.0"
-[pvcglue_dev_box.stages.test.roles.lb.lb]
-allow_public_access = true
-private_ip = "0.0.0.0"
-public_ip = "0.0.0.0"
-[pvcglue_dev_box.stages.test.roles.web.web_1]
-private_ip = "0.0.0.0"
-public_ip = "0.0.0.0"
+  excluded_db_tables = ["versions"]
+  name = "pvcglue_dev_box"
+  repo_url = "git@github.com:talyric/pvcglue-dev-box.git"
+  ssh_allowed_from_all_port = "22222"
+  swapfile_size = 128
+  time_zone = "America/Los_Angeles"
+
+  [pvcglue_dev_box.authorized_keys]
+    example = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+
+  [pvcglue_dev_box.dev_ip_addresses]
+    local = "127.0.0.1"
+    user = "10.10.10.117"
+
+  [pvcglue_dev_box.gems]
+    delayed_job = false
+    whenever = true
+
+    [pvcglue_dev_box.stages.local]
+      db_rebuild = true
+      domains = ["10.10.10.223"]
+      ssl = "none"
+
+          [pvcglue_dev_box.stages.local.roles.db.db]
+            private_ip = "172.28.128.5"
+            public_ip = "10.10.10.6"
+
+          [pvcglue_dev_box.stages.local.roles.lb.lb]
+            allow_public_access = true
+            private_ip = "172.28.128.6"
+            public_ip = "10.10.10.223"
+
+          [pvcglue_dev_box.stages.local.roles.redis.redis]
+            private_ip = "172.28.128.5"
+            public_ip = "10.10.10.6"
+
+          [pvcglue_dev_box.stages.local.roles.web.web_1]
+            private_ip = "172.28.128.4"
+            public_ip = "10.10.10.40"
+
+    [pvcglue_dev_box.stages.test]
+      db_rebuild = false
+      domains = ["pvcglue_dev_box.test"]
+      ssl = "none"
+
+          [pvcglue_dev_box.stages.test.roles.caching.memcached]
+            private_ip = "0.0.0.0"
+            public_ip = "0.0.0.0"
+
+          [pvcglue_dev_box.stages.test.roles.db.db]
+            private_ip = "0.0.0.0"
+            public_ip = "0.0.0.0"
+
+          [pvcglue_dev_box.stages.test.roles.lb.lb]
+            allow_public_access = true
+            private_ip = "0.0.0.0"
+            public_ip = "0.0.0.0"
+
+          [pvcglue_dev_box.stages.test.roles.web.web_1]
+            private_ip = "0.0.0.0"
+            public_ip = "0.0.0.0"
