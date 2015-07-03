@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   get 'status/resque'
 
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
   resources :articles
   root 'articles#index'
   # The priority is based upon order of creation: first created -> highest priority.
