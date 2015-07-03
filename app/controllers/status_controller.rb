@@ -4,5 +4,6 @@ class StatusController < ApplicationController
   end
 
   def resque
+    @status = Status.new_resque_job
   end
 end

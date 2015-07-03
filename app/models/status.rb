@@ -1,4 +1,5 @@
 class Status < ActiveRecord::Base
+  @queue = :status
 
   def self.new_delayed_job
     status = Status.new
@@ -39,5 +40,27 @@ class Status < ActiveRecord::Base
       end
     end
   end
+
+  def self.new_resque_job
+    status = Status.new
+    status.state = "testing"
+    status.desc = "resque status"
+    status.save!
+    if Rails.env.development?
+      # Status.perform(status.id)
+      Resque.enqueue(Status, status.id) # start a worker with `INTERVAL=0.1 QUEUE=* rake environment resque:work`
+    else
+      Resque.enqueue(Status, status.id)
+    end
+    status.wait
+    status
+  end
+
+  def self.perform(status_id)
+    status = Status.find(status_id)
+    status.state = 'complete'
+    status.save!
+  end
+
 
 end
