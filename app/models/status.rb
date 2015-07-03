@@ -7,6 +7,7 @@ class Status < ActiveRecord::Base
     status.save!
     if Rails.env.development?
       status.run_delayed_job
+      # status.delay.run_delayed_job
     else
       status.delay.run_delayed_job
     end
@@ -29,11 +30,13 @@ class Status < ActiveRecord::Base
 
   def wait
     start = Time.zone.now
-    loop do
-      reload
-      break if state == 'complete' || Time.zone.now - start > 10.seconds
-      # break if state == 'complete' || Time.zone.now - start > 3.seconds
-      sleep(1.0/10.0)
+    Status.uncached do
+      loop do
+        reload
+        break if state == 'complete' || Time.zone.now - start > 10.seconds
+        # break if state == 'complete' || Time.zone.now - start > 3.seconds
+        sleep(1.0/10.0)
+      end
     end
   end
 
