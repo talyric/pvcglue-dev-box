@@ -23,25 +23,26 @@
 
     [pvcglue_dev_box.stages.local]
       db_rebuild = true
-      domains = ["10.10.10.165"]
+      domains = ["10.10.10.194"]
       ssl = "none"
+      delayed_job_workers = 3
 
           [pvcglue_dev_box.stages.local.roles.db.db]
             private_ip = "172.28.128.5"
-            public_ip = "10.10.10.31"
+            public_ip = "10.10.10.174"
 
           [pvcglue_dev_box.stages.local.roles.lb.lb]
             allow_public_access = true
             private_ip = "172.28.128.6"
-            public_ip = "10.10.10.165"
+            public_ip = "10.10.10.194"
 
           [pvcglue_dev_box.stages.local.roles.redis.redis]
             private_ip = "172.28.128.5"
-            public_ip = "10.10.10.31"
+            public_ip = "10.10.10.174"
 
           [pvcglue_dev_box.stages.local.roles.web.web_1]
             private_ip = "172.28.128.4"
-            public_ip = "10.10.10.8"
+            public_ip = "10.10.10.145"
 
     [pvcglue_dev_box.stages.test]
       db_rebuild = false
