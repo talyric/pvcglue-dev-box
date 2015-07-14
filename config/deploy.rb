@@ -27,21 +27,25 @@ namespace :deploy do
   desc 'Stop the workers'
   task :stop_workers do
     on roles(:app) do
-      execute :'curl http://localhost:2812/pvcglue_dev_box_local_worker_control -d "action=stop"'
+      execute :'curl -sS http://localhost:2812/pvcglue_dev_box_local_worker_control -d "action=stop"'
     end
   end
 
   desc 'Start the workers'
   task :start_workers do
     on roles(:app) do
-      execute :'curl http://localhost:2812/pvcglue_dev_box_local_worker_control -d "action=start"'
+      execute :'curl -sS http://localhost:2812/monit_reload -d "action=restart"'
+      execute :'sleep 5' # must wait for reload
+      execute :'curl -sS http://localhost:2812/pvcglue_dev_box_local_worker_control -d "action=start"'
     end
   end
 
   desc 'Restart the workers'
   task :restart_workers do
     on roles(:app) do
-      execute :'curl http://localhost:2812/pvcglue_dev_box_local_worker_control -d "action=restart"'
+      execute :'curl -sS http://localhost:2812/monit_reload -d "action=restart"'
+      execute :'sleep 5' # must wait for reload
+      execute :'curl -sS http://localhost:2812/pvcglue_dev_box_local_worker_control -d "action=restart"'
     end
   end
 
