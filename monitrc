@@ -15,7 +15,7 @@ check process delayed_job.0
   stop program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && RAILS_ENV=local /sites/pvcglue_dev_box/local/current/bin/delayed_job stop -i 0 --pid-dir=/sites/pvcglue_dev_box/local/shared/pids'" as uid deploy and gid deploy
   group pvcglue_dev_box_local_delayed_job
   group pvcglue_dev_box_local_workers
-  depends on pvcglue_dev_box_local_control
+  depends on pvcglue_dev_box_local_worker_control
 
 check process delayed_job.1
   with pidfile /sites/pvcglue_dev_box/local/shared/pids/delayed_job.1.pid
@@ -23,7 +23,7 @@ check process delayed_job.1
   stop program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && RAILS_ENV=local /sites/pvcglue_dev_box/local/current/bin/delayed_job stop -i 1 --pid-dir=/sites/pvcglue_dev_box/local/shared/pids'" as uid deploy and gid deploy
   group pvcglue_dev_box_local_delayed_job
   group pvcglue_dev_box_local_workers
-  depends on pvcglue_dev_box_local_control
+  depends on pvcglue_dev_box_local_worker_control
 
 check process delayed_job.2
   with pidfile /sites/pvcglue_dev_box/local/shared/pids/delayed_job.2.pid
@@ -31,5 +31,5 @@ check process delayed_job.2
   stop program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && RAILS_ENV=local /sites/pvcglue_dev_box/local/current/bin/delayed_job stop -i 2 --pid-dir=/sites/pvcglue_dev_box/local/shared/pids'" as uid deploy and gid deploy
   group pvcglue_dev_box_local_delayed_job
   group pvcglue_dev_box_local_workers
-  depends on pvcglue_dev_box_local_control
+  depends on pvcglue_dev_box_local_worker_control
 

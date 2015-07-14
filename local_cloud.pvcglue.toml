@@ -19,6 +19,7 @@
 
   [pvcglue_dev_box.gems]
     delayed_job = true
+    resque = true
     whenever = true
 
     [pvcglue_dev_box.stages.local]

@@ -23,46 +23,71 @@ task :invoke, [:command] => 'deploy:set_rails_env' do |task, args|
 end
 
 namespace :deploy do
-  def args
-    fetch(:delayed_job_args, "")
-  end
 
-  def delayed_job_roles
-    fetch(:delayed_job_server_role, :app)
-  end
-
-  desc 'Stop the delayed_job process'
-  task :delayed_job_stop do
-    on roles(delayed_job_roles) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :'bin/delayed_job', :stop
-        end
-      end
+  desc 'Stop the workers'
+  task :stop_workers do
+    on roles(:app) do
+      execute :'curl http://localhost:2812/pvcglue_dev_box_local_worker_control -d "action=stop"'
     end
   end
 
-  desc 'Start the delayed_job process'
-  task :delayed_job_start do
-    on roles(delayed_job_roles) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :'bin/delayed_job', args, :start
-        end
-      end
+  desc 'Start the workers'
+  task :start_workers do
+    on roles(:app) do
+      execute :'curl http://localhost:2812/pvcglue_dev_box_local_worker_control -d "action=start"'
     end
   end
 
-  desc 'Restart the delayed_job process'
-  task :delayed_job_restart do
-    on roles(delayed_job_roles) do
-      within release_path do
-        with rails_env: fetch(:rails_env) do
-          execute :'bin/delayed_job', args, :restart
-        end
-      end
+  desc 'Restart the workers'
+  task :restart_workers do
+    on roles(:app) do
+      execute :'curl http://localhost:2812/pvcglue_dev_box_local_worker_control -d "action=restart"'
     end
   end
+
+  after :started, :stop_workers
+  after :publishing, :start_workers
+
+  # def args
+  #   fetch(:delayed_job_args, "")
+  # end
+  #
+  # def delayed_job_roles
+  #   fetch(:delayed_job_server_role, :app)
+  # end
+  #
+  # desc 'Stop the delayed_job process'
+  # task :delayed_job_stop do
+  #   on roles(delayed_job_roles) do
+  #     within release_path do
+  #       with rails_env: fetch(:rails_env) do
+  #         execute :'bin/delayed_job', :stop
+  #       end
+  #     end
+  #   end
+  # end
+  #
+  # desc 'Start the delayed_job process'
+  # task :delayed_job_start do
+  #   on roles(delayed_job_roles) do
+  #     within release_path do
+  #       with rails_env: fetch(:rails_env) do
+  #         execute :'bin/delayed_job', args, :start
+  #       end
+  #     end
+  #   end
+  # end
+  #
+  # desc 'Restart the delayed_job process'
+  # task :delayed_job_restart do
+  #   on roles(delayed_job_roles) do
+  #     within release_path do
+  #       with rails_env: fetch(:rails_env) do
+  #         execute :'bin/delayed_job', args, :restart
+  #       end
+  #     end
+  #   end
+  # end
 
   #desc 'Restart Delayed Job'
   #task :restart_delayed_job do
@@ -76,7 +101,7 @@ namespace :deploy do
   #end
 
 
-  after :publishing, :delayed_job_restart # calling this directly is a work-around due to "NoMethodError: undefined method `verbosity'" error when calling task from a task in capistrano 3.1.0 and SSHKit 1.3.0
+  # after :publishing, :delayed_job_restart # calling this directly is a work-around due to "NoMethodError: undefined method `verbosity'" error when calling task from a task in capistrano 3.1.0 and SSHKit 1.3.0
 
   desc 'Restart passenger app'
   task :restart_passenger do
