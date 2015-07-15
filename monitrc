@@ -29,7 +29,7 @@ check process pvcglue_dev_box_local_delayed_job.1
 # Based on https://github.com/resque/resque/blob/master/examples/monit/resque.monit
 check process pvcglue_dev_box_local_resque_worker.0
   with pidfile /sites/pvcglue_dev_box/local/shared/pids/resque_worker.0.pid
-  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && nohup bundle exec rake environment resque:work RAILS_ENV=local QUEUE=pvcglue_dev_box_local_resque_worker.0 VERBOSE=1 PIDFILE=/sites/pvcglue_dev_box/local/shared/pids/resque_worker.0.pid >> log/resque_worker.log 2>&1'" as uid deploy and gid deploy
+  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && nohup bundle exec rake environment resque:work RAILS_ENV=local QUEUE=* VERBOSE=1 PIDFILE=/sites/pvcglue_dev_box/local/shared/pids/resque_worker.0.pid >> log/resque_worker.log 2>&1'" as uid deploy and gid deploy
   stop program = "/bin/sh -c 'kill -9 $(cat /sites/pvcglue_dev_box/local/shared/pids/resque_worker.0.pid) && rm -f /sites/pvcglue_dev_box/local/shared/pids/resque_worker.0.pid; exit 0;'" as uid deploy and gid deploy
   group pvcglue_dev_box_local_resque
   group pvcglue_dev_box_local_workers
@@ -38,7 +38,7 @@ check process pvcglue_dev_box_local_resque_worker.0
 # Based on https://github.com/resque/resque/blob/master/examples/monit/resque.monit
 check process pvcglue_dev_box_local_resque_worker.1
   with pidfile /sites/pvcglue_dev_box/local/shared/pids/resque_worker.1.pid
-  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && nohup bundle exec rake environment resque:work RAILS_ENV=local QUEUE=pvcglue_dev_box_local_resque_worker.1 VERBOSE=1 PIDFILE=/sites/pvcglue_dev_box/local/shared/pids/resque_worker.1.pid >> log/resque_worker.log 2>&1'" as uid deploy and gid deploy
+  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && nohup bundle exec rake environment resque:work RAILS_ENV=local QUEUE=* VERBOSE=1 PIDFILE=/sites/pvcglue_dev_box/local/shared/pids/resque_worker.1.pid >> log/resque_worker.log 2>&1'" as uid deploy and gid deploy
   stop program = "/bin/sh -c 'kill -9 $(cat /sites/pvcglue_dev_box/local/shared/pids/resque_worker.1.pid) && rm -f /sites/pvcglue_dev_box/local/shared/pids/resque_worker.1.pid; exit 0;'" as uid deploy and gid deploy
   group pvcglue_dev_box_local_resque
   group pvcglue_dev_box_local_workers
