@@ -7,7 +7,7 @@ set :linked_files, ['.env.local']
 set :rvm_ruby_version, '2.1.5'
 set :ssh_options, {port: 22222}
 
-server '10.10.10.31', roles: %w{web app db}, user: 'deploy' # server: web_1
+server '10.10.10.137', roles: %w{web app db}, user: 'deploy' # server: web_1
 
 namespace :deploy do
   Rake::Task["deploy:migrate"].clear_actions # Don't run migrations...just do the reload.
