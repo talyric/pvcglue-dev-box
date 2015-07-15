@@ -130,6 +130,8 @@ GEM
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
+    rack-proxy (0.5.17)
+      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (4.1.8)
@@ -237,6 +239,7 @@ DEPENDENCIES
   pg
   pvcglue (~> 0.1.25)!
   pvcglue_dbutils (~> 0.5.3)
+  rack-proxy
   rails (= 4.1.8)
   resque
   rspec-rails (~> 3.0)

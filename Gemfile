@@ -48,6 +48,7 @@ gem 'resque', :require => "resque/server"
 gem 'whenever'
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
+gem 'rack-proxy'
 
 # to use locally committed gem, use `bundle config local.pvcglue ~/projects/pvcglue`
 # and `bundle config --delete local.pvcglue` to restore using remote repo

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  match 'monit(/*other)', via: :all, to: 'monit#index'
+
   get 'status/dj'
 
   get 'status/resque'
@@ -6,6 +8,9 @@ Rails.application.routes.draw do
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   mount Resque::Server.new, :at => "/resque"
+
+  # match '/monit' => MonitWeb
+  # mount MonitWeb, :at => "/monit/index"
 
   resources :articles
 
