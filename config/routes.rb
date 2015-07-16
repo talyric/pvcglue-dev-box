@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   match 'monit(/*other)', via: :all, to: 'monit#index'
+  # get '/monit', to: redirect('/monit/')
 
   get 'status/dj'
 

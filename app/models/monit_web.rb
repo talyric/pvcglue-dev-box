@@ -4,8 +4,9 @@ class MonitWeb < Rack::Proxy
     env["HTTP_HOST"] = "localhost:2812"
     # env["REQUEST_PATH"] = '/_runtime'
     env["PATH_INFO"] = "/#{env['action_dispatch.request.parameters']['other']}"
+    puts env["PATH_INFO"]
     # env["REQUEST_URI"] = '/_runtime'
-    env.each {|key, value| puts "#{key}=#{value}"}
+    # env.each {|key, value| puts "#{key}=#{value}"}
     # puts env.inspect
 
     env
