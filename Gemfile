@@ -46,6 +46,9 @@ gem 'thin'
 gem 'resque', :require => "resque/server"
 
 gem 'whenever'
+gem 'delayed_job_active_record'
+gem "delayed_job_web"
+gem 'rack-proxy'
 
 # to use locally committed gem, use `bundle config local.pvcglue ~/projects/pvcglue`
 # and `bundle config --delete local.pvcglue` to restore using remote repo
@@ -54,6 +57,7 @@ gem 'whenever'
 
 # gem 'pvcglue', "~> 0.1.22", :group => :development
 gem 'pvcglue', '~> 0.1.25', :github => 'talyric/pvcglue', :branch => 'master', :group => :development
+# gem 'pvcglue', :path => "c:/Sites/pvcglue"
 gem 'pvcglue_dbutils', '~> 0.5.3'
 # gem 'pvcglue_dbutils', "~> 0.5.2", :github => 'talyric/pvcglue_dbutils', :branch => 'master' # must be available in all environments
 
