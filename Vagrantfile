@@ -57,6 +57,9 @@ Vagrant.configure(2) do |config|
   end
 
   config.vm.define "local-web", primary: true, autostart: false do |machine|
+    machine.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+    end
   end
   # config.vm.define "local-web_2", autostart: false do |machine|
   # end

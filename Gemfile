@@ -53,7 +53,7 @@ gem 'whenever'
 # and http://bundler.io/v1.3/bundle_config.html
 
 # gem 'pvcglue', "~> 0.1.22", :group => :development
-gem 'pvcglue', '~> 0.1.22', :github => 'talyric/pvcglue', :branch => 'master', :group => :development
+gem 'pvcglue', '~> 0.1.25', :github => 'talyric/pvcglue', :branch => 'master', :group => :development
 gem 'pvcglue_dbutils', '~> 0.5.3'
 # gem 'pvcglue_dbutils', "~> 0.5.2", :github => 'talyric/pvcglue_dbutils', :branch => 'master' # must be available in all environments
 

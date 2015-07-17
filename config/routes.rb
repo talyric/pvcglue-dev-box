@@ -1,6 +1,22 @@
 Rails.application.routes.draw do
+  match 'monit(/*other)', via: :all, to: 'monit#index'
+  # get '/monit', to: redirect('/monit/')
+
+  get 'status/dj'
+
+  get 'status/resque'
+
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
+
+  mount Resque::Server.new, :at => "/resque"
+
+  # match '/monit' => MonitWeb
+  # mount MonitWeb, :at => "/monit/index"
+
   resources :articles
+
   root 'articles#index'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
