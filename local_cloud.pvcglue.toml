@@ -47,6 +47,8 @@
             public_ip = "10.10.10.94"
 
     [pvcglue_dev_box.stages.vmtest]
+      delayed_job_workers = 2
+      resque_workers = 2
       db_rebuild = false
       domains = ["10.10.10.45"]
       ssl = "none"
