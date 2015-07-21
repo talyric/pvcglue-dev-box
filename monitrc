@@ -5,42 +5,25 @@
 #    curl http://localhost:2812/pvcglue_dev_box_local_control -d "action=start"
 #
 
-check file pvcglue_dev_box_local_worker_control with path /sites/pvcglue_dev_box/local/shared/worker_control
+check file pvcglue_dev_box_vmtest_worker_control with path /sites/pvcglue_dev_box/vmtest/shared/worker_control
   # this is a "no-op" so that the default monit actions do not execute
   if does not exist then exec "/bin/true" else if succeeded then exec "/bin/true"
 
-  check process pvcglue_dev_box_local_delayed_job_0
-  with pidfile /sites/pvcglue_dev_box/local/shared/pids/delayed_job.0.pid
-  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && RAILS_ENV=local /sites/pvcglue_dev_box/local/current/bin/delayed_job start -i 0 --pid-dir=/sites/pvcglue_dev_box/local/shared/pids'" as uid deploy and gid deploy
-  stop program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && RAILS_ENV=local /sites/pvcglue_dev_box/local/current/bin/delayed_job stop -i 0 --pid-dir=/sites/pvcglue_dev_box/local/shared/pids'" as uid deploy and gid deploy
-  group pvcglue_dev_box_local_delayed_job
-  group pvcglue_dev_box_local_workers
-  depends on pvcglue_dev_box_local_worker_control
-
-  check process pvcglue_dev_box_local_delayed_job_1
-  with pidfile /sites/pvcglue_dev_box/local/shared/pids/delayed_job.1.pid
-  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && RAILS_ENV=local /sites/pvcglue_dev_box/local/current/bin/delayed_job start -i 1 --pid-dir=/sites/pvcglue_dev_box/local/shared/pids'" as uid deploy and gid deploy
-  stop program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && RAILS_ENV=local /sites/pvcglue_dev_box/local/current/bin/delayed_job stop -i 1 --pid-dir=/sites/pvcglue_dev_box/local/shared/pids'" as uid deploy and gid deploy
-  group pvcglue_dev_box_local_delayed_job
-  group pvcglue_dev_box_local_workers
-  depends on pvcglue_dev_box_local_worker_control
+  check process pvcglue_dev_box_vmtest_delayed_job_0
+  with pidfile /sites/pvcglue_dev_box/vmtest/shared/pids/delayed_job.0.pid
+  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/vmtest/current && RAILS_ENV=vmtest /sites/pvcglue_dev_box/vmtest/current/bin/delayed_job start -i 0 --pid-dir=/sites/pvcglue_dev_box/vmtest/shared/pids'" as uid deploy and gid deploy
+  stop program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/vmtest/current && RAILS_ENV=vmtest /sites/pvcglue_dev_box/vmtest/current/bin/delayed_job stop -i 0 --pid-dir=/sites/pvcglue_dev_box/vmtest/shared/pids'" as uid deploy and gid deploy
+  group pvcglue_dev_box_vmtest_delayed_job
+  group pvcglue_dev_box_vmtest_workers
+  depends on pvcglue_dev_box_vmtest_worker_control
 
 
 # Based on https://github.com/resque/resque/blob/master/examples/monit/resque.monit
-check process pvcglue_dev_box_local_resque_worker_0
-  with pidfile /sites/pvcglue_dev_box/local/shared/pids/resque_worker.0.pid
-  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && nohup bundle exec rake environment resque:work RAILS_ENV=local QUEUE=* VERBOSE=1 PIDFILE=/sites/pvcglue_dev_box/local/shared/pids/resque_worker.0.pid >> log/resque_worker.log 2>&1'" as uid deploy and gid deploy
-  stop program = "/bin/sh -c 'kill -9 $(cat /sites/pvcglue_dev_box/local/shared/pids/resque_worker.0.pid) && rm -f /sites/pvcglue_dev_box/local/shared/pids/resque_worker.0.pid; exit 0;'" as uid deploy and gid deploy
-  group pvcglue_dev_box_local_resque
-  group pvcglue_dev_box_local_workers
-  depends on pvcglue_dev_box_local_worker_control
-
-# Based on https://github.com/resque/resque/blob/master/examples/monit/resque.monit
-check process pvcglue_dev_box_local_resque_worker_1
-  with pidfile /sites/pvcglue_dev_box/local/shared/pids/resque_worker.1.pid
-  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/local/current && nohup bundle exec rake environment resque:work RAILS_ENV=local QUEUE=* VERBOSE=1 PIDFILE=/sites/pvcglue_dev_box/local/shared/pids/resque_worker.1.pid >> log/resque_worker.log 2>&1'" as uid deploy and gid deploy
-  stop program = "/bin/sh -c 'kill -9 $(cat /sites/pvcglue_dev_box/local/shared/pids/resque_worker.1.pid) && rm -f /sites/pvcglue_dev_box/local/shared/pids/resque_worker.1.pid; exit 0;'" as uid deploy and gid deploy
-  group pvcglue_dev_box_local_resque
-  group pvcglue_dev_box_local_workers
-  depends on pvcglue_dev_box_local_worker_control
+check process pvcglue_dev_box_vmtest_resque_worker_0
+  with pidfile /sites/pvcglue_dev_box/vmtest/shared/pids/resque_worker.0.pid
+  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /sites/pvcglue_dev_box/vmtest/current && nohup bundle exec rake environment resque:work RAILS_ENV=vmtest QUEUE=* VERBOSE=1 PIDFILE=/sites/pvcglue_dev_box/vmtest/shared/pids/resque_worker.0.pid >> log/resque_worker.log 2>&1'" as uid deploy and gid deploy
+  stop program = "/bin/sh -c 'kill -9 $(cat /sites/pvcglue_dev_box/vmtest/shared/pids/resque_worker.0.pid) && rm -f /sites/pvcglue_dev_box/vmtest/shared/pids/resque_worker.0.pid; exit 0;'" as uid deploy and gid deploy
+  group pvcglue_dev_box_vmtest_resque
+  group pvcglue_dev_box_vmtest_workers
+  depends on pvcglue_dev_box_vmtest_worker_control
 

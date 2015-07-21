@@ -22,7 +22,7 @@ Vagrant.configure(2) do |config|
   # boxes will only be checked for updates when the user runs
   # `vagrant box outdated`. This is not recommended.
   # We are going to be updating through pvcglue, anyway.
-  config.vm.box_check_update = false
+  # config.vm.box_check_update = false
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine. In the example below,
@@ -70,16 +70,19 @@ Vagrant.configure(2) do |config|
   # config.vm.define "local-memcached", autostart: false do |machine|
   # end
 
-  config.vm.define "test-web", autostart: false do |machine|
+  config.vm.define "vmtest-web", autostart: false do |machine|
+    machine.vm.provider "virtualbox" do |v|
+      v.memory = 2048
+    end
   end
-  config.vm.define "test-web_2", autostart: false do |machine|
+  # config.vm.define "vmtest-web_2", autostart: false do |machine|
+  # end
+  config.vm.define "vmtest-db", autostart: false do |machine|
   end
-  config.vm.define "test-db", autostart: false do |machine|
+  config.vm.define "vmtest-lb", autostart: false do |machine|
   end
-  config.vm.define "test-lb", autostart: false do |machine|
-  end
-  config.vm.define "test-memcached", autostart: false do |machine|
-  end
+  # config.vm.define "vmtest-memcached", autostart: false do |machine|
+  # end
   # pvcglue was only designed for 1 cloud manager...may want to refactor later.
   # config.vm.define "test-manager", autostart: false do |machine|
   # end
