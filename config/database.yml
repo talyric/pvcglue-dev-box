@@ -62,4 +62,4 @@ local:
 
 vmtest:
   <<: *default_settings
-  database: pvcglue_dev_box_local
+  database: pvcglue_dev_box_vmtest
