@@ -7,4 +7,4 @@ set :linked_files, ['.env.vmtest']
 set :rvm_ruby_version, '2.1.5'
 set :ssh_options, {port: 22222}
 
-server '10.10.10.178', roles: %w{web app db}, user: 'deploy' # server: web_1
+server '10.10.10.124', roles: %w{web app db}, user: 'deploy' # server: web_1

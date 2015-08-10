@@ -18,7 +18,7 @@ class Status < ActiveRecord::Base
 
   def result
     if state == 'complete'
-      "[OK]"
+      "-OK-"
     else
       "ERROR"
     end

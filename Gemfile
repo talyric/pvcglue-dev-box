@@ -49,6 +49,7 @@ gem 'whenever'
 gem 'delayed_job_active_record'
 gem "delayed_job_web"
 gem 'rack-proxy'
+gem 'httparty'
 
 # to use locally committed gem, use `bundle config local.pvcglue ~/projects/pvcglue`
 # and `bundle config --delete local.pvcglue` to restore using remote repo
@@ -63,5 +64,5 @@ gem 'pvcglue_dbutils', '~> 0.5.3'
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0'
-  gem "capybara"
+  # gem "capybara"
 end
