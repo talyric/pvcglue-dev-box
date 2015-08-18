@@ -13,6 +13,7 @@ end
 
 def pvc_cloud
   @pvc_cloud ||= begin
+    puts "+"*80
     raise('Not in local mode!') unless Pvcglue::Manager.local_mode? # Safety first!
     Pvcglue.cloud.set_stage('vmtest')
     raise('Not the correct stage!') unless Pvcglue.cloud.stage_name == 'vmtest' # Safety first!

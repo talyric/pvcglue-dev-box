@@ -49,23 +49,23 @@
     [pvcglue_dev_box.stages.vmtest]
       db_rebuild = false
       delayed_job_workers = 2
-      domains = ["10.10.10.200"]
+      domains = ["10.10.10.180"]
       resque_workers = 2
       ssl = "none"
 
           [pvcglue_dev_box.stages.vmtest.roles.db.db]
             private_ip = "172.28.128.5"
-            public_ip = "10.10.10.65"
+            public_ip = "10.10.10.50"
 
           [pvcglue_dev_box.stages.vmtest.roles.lb.lb]
             allow_public_access = true
             private_ip = "172.28.128.6"
-            public_ip = "10.10.10.200"
+            public_ip = "10.10.10.180"
 
           [pvcglue_dev_box.stages.vmtest.roles.redis.redis]
             private_ip = "172.28.128.5"
-            public_ip = "10.10.10.65"
+            public_ip = "10.10.10.50"
 
           [pvcglue_dev_box.stages.vmtest.roles.web.web_1]
             private_ip = "172.28.128.4"
-            public_ip = "10.10.10.88"
+            public_ip = "10.10.10.111"
