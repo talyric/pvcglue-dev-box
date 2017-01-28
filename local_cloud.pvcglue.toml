@@ -1,71 +1,243 @@
+#[pvcglue_dev_box]
+#  excluded_db_tables = ["versions"]
+#  name = "pvcglue_dev_box"
+#  repo_url = "git@github.com:talyric/pvcglue-dev-box.git"
+#  ssh_allowed_from_all_port = "22222"
+#  swapfile_size = 128
+#  time_zone = "America/Los_Angeles"
+#
+#  [pvcglue_dev_box.authorized_keys]
+#    example = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+#
+#  [pvcglue_dev_box.dev_ip_addresses]
+#    local = "127.0.0.1"
+#    user = "10.10.10.117"
+#
+#  [pvcglue_dev_box.gems]
+#    delayed_job = true
+#    resque = true
+#    whenever = true
+#
+#    [pvcglue_dev_box.stages.local]
+#      db_rebuild = true
+#      delayed_job_workers = 2
+#      domains = ["10.10.10.188"]
+#      resque_workers = 2
+#      ssl = "none"
+#
+#          [pvcglue_dev_box.stages.local.roles.db.db]
+#            private_ip = "172.28.128.5"
+#            public_ip = "10.10.10.118"
+#
+#          [pvcglue_dev_box.stages.local.roles.lb.lb]
+#            allow_public_access = true
+#            private_ip = "172.28.128.6"
+#            public_ip = "10.10.10.188"
+#
+#          [pvcglue_dev_box.stages.local.roles.redis.redis]
+#            private_ip = "172.28.128.5"
+#            public_ip = "10.10.10.118"
+#
+#          [pvcglue_dev_box.stages.local.roles.web.web_1]
+#            private_ip = "172.28.128.4"
+#            public_ip = "10.10.10.94"
+#
+#    [pvcglue_dev_box.stages.vmtest]
+#      db_rebuild = false
+#      delayed_job_workers = 2
+#      domains = ["10.10.10.180"]
+#      resque_workers = 2
+#      ssl = "none"
+#
+#          [pvcglue_dev_box.stages.vmtest.roles.db.db]
+#            private_ip = "172.28.128.5"
+#            public_ip = "10.10.10.50"
+#
+#          [pvcglue_dev_box.stages.vmtest.roles.lb.lb]
+#            allow_public_access = true
+#            private_ip = "172.28.128.6"
+#            public_ip = "10.10.10.180"
+#
+#          [pvcglue_dev_box.stages.vmtest.roles.redis.redis]
+#            private_ip = "172.28.128.5"
+#            public_ip = "10.10.10.50"
+#
+#          [pvcglue_dev_box.stages.vmtest.roles.web.web_1]
+#            private_ip = "172.28.128.4"
+#            public_ip = "10.10.10.111"
 ################################################################################
 #  === pvcglue_dev_box ===
 ################################################################################
 
-[pvcglue_dev_box]
-  excluded_db_tables = ["versions"]
+[[users]]
+  name = 'Andrew'
+  [[users.public_keys]]
+    key_1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+    key_2 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+
+  name = 'Rob'
+  [[users.public_keys]]
+    key_1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+    key_2 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+
+  name = 'Bob'
+  [[users.public_keys]]
+    key_1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+    key_2 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+
+[groups]
+  lead_developers = ['Andrew']
+  #  production_users = ['Rob']
+  developers = ['Bob']
+  all_developers = ["==lead_developers==", "==developers=="]
+
+[[projects]]
   name = "pvcglue_dev_box"
   repo_url = "git@github.com:talyric/pvcglue-dev-box.git"
-  ssh_allowed_from_all_port = "22222"
-  swapfile_size = 128
-  time_zone = "America/Los_Angeles"
+  excluded_db_tables = ["versions"]
 
-  [pvcglue_dev_box.authorized_keys]
-    example = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
-
-  [pvcglue_dev_box.dev_ip_addresses]
-    local = "127.0.0.1"
-    user = "10.10.10.117"
-
-  [pvcglue_dev_box.gems]
+  [projects.gems]
     delayed_job = true
     resque = true
     whenever = true
 
-    [pvcglue_dev_box.stages.local]
-      db_rebuild = true
-      delayed_job_workers = 2
-      domains = ["10.10.10.188"]
+  ssh_allowed_from_all_port = "22222"
+  swapfile_size = 128
+  time_zone = "America/Los_Angeles"
+
+  [[projects.stages]]
+    name = 'alpha'
+    db_rebuild = true
+    domains = ["sub.example.com"]
+    ssl = "none"
+
+    [[projects.stages.stack]]
+      role = 'lb'
+      machine_name = '==staging-lb=='
+
+    [[projects.stages.stack]]
+      role = 'web'
+      role_index = 1
+      machine_name = '==staging-web-1=='
+
+    [[projects.stages.stack]]
+      role = 'web'
+      role_index = 2
+      machine_name = '==staging-web-2=='
+
+    [[projects.stages.stack]]
+      role = 'worker'
+      role_index = 1
+      machine_name = '==staging-worker-1=='
       resque_workers = 2
-      ssl = "none"
-
-          [pvcglue_dev_box.stages.local.roles.db.db]
-            private_ip = "172.28.128.5"
-            public_ip = "10.10.10.118"
-
-          [pvcglue_dev_box.stages.local.roles.lb.lb]
-            allow_public_access = true
-            private_ip = "172.28.128.6"
-            public_ip = "10.10.10.188"
-
-          [pvcglue_dev_box.stages.local.roles.redis.redis]
-            private_ip = "172.28.128.5"
-            public_ip = "10.10.10.118"
-
-          [pvcglue_dev_box.stages.local.roles.web.web_1]
-            private_ip = "172.28.128.4"
-            public_ip = "10.10.10.94"
-
-    [pvcglue_dev_box.stages.vmtest]
-      db_rebuild = false
       delayed_job_workers = 2
-      domains = ["10.10.10.180"]
+
+    [[projects.stages.stack]]
+      role = 'worker'
+      role_index = 2
+      machine_name = '==staging-web-2=='
       resque_workers = 2
-      ssl = "none"
+      delayed_job_workers = 2
 
-          [pvcglue_dev_box.stages.vmtest.roles.db.db]
-            private_ip = "172.28.128.5"
-            public_ip = "10.10.10.50"
+    [[projects.stages.stack]]
+      role = 'mc'
+      machine_name = '==staging-mc=='
 
-          [pvcglue_dev_box.stages.vmtest.roles.lb.lb]
-            allow_public_access = true
-            private_ip = "172.28.128.6"
-            public_ip = "10.10.10.180"
+    [[projects.stages.stack]]
+      role = 'pg'
+      machine_name = '==staging-pg=='
 
-          [pvcglue_dev_box.stages.vmtest.roles.redis.redis]
-            private_ip = "172.28.128.5"
-            public_ip = "10.10.10.50"
+  [[projects.stages]]
+    name = 'beta'
+    db_rebuild = true
+    domains = ["sub.example.com"]
+    ssl = "none"
 
-          [pvcglue_dev_box.stages.vmtest.roles.web.web_1]
-            private_ip = "172.28.128.4"
-            public_ip = "10.10.10.111"
+    [[projects.stages.stack]]
+      role = 'lb'
+      machine_name = '==staging-lb=='
+
+
+[cloud_provider]
+  name = 'digital-ocean'
+  image = '21669205' # Ubuntu 16.04.1 x64
+
+  #region = 'nyc1' # New York 1
+  #region = 'sfo1' # San Francisco 1
+  #region = 'nyc2' # New York 2
+  #region = 'ams2' # Amsterdam 2
+  #region = 'sgp1' # Singapore 1
+  #region = 'lon1' # London 1
+  #region = 'nyc3' # New York 3
+  #region = 'ams3' # Amsterdam 3
+  #region = 'fra1' # Frankfurt 1
+  #region = 'tor1' # Toronto 1
+  region = 'sfo2' # San Francisco 2
+  #region = 'blr1' # Bangalore 1
+
+  # can't use 'size' as a key
+  default_capacity = '512mb'
+  #default_capacity = '1gb'
+  #default_capacity = '2gb'
+  #default_capacity = '4gb'
+  #default_capacity = '8gb'
+  #default_capacity = '16gb'
+  #default_capacity = 'm-16gb'
+  #default_capacity = '32gb'
+  #default_capacity = 'm-32gb'
+  #default_capacity = '48gb'
+  #default_capacity = 'm-64gb'
+  #default_capacity = '64gb'
+  #default_capacity = 'm-128gb'
+  #default_capacity = 'm-224gb'
+
+  [cloud_provider.initial_users]
+    #"john.burtness@bethelmusic.com" =   "0d:a9:fb:78:e5:81:11:08:0d:41:3c:f3:9f:f8:48:85"
+    #"benjamin.jacobs@ibethel.org" =     "1b:a2:2b:da:01:9d:c4:74:ce:3e:10:6d:03:e0:bb:b7"
+    #"root@bethelmusic.com" =            "92:15:f2:33:ac:2e:2f:fb:34:37:d5:1c:48:c8:73:32"
+    "Andrew Lyric" =                     "d1:fe:e8:53:d4:fb:eb:f1:db:fc:ef:18:f1:cf:1e:5d"
+    #"Keith Ward" =                      "1f:28:60:4d:3d:09:05:8e:dd:66:34:95:10:5a:fe:e4"
+
+[[machines]]
+  name = 'staging-lb'
+  public_ip = '138.68.3.239'
+  private_ip = '10.138.32.145'
+  users = "==all_developers=="
+
+[[machines]]
+  name = 'staging-web-1'
+  private_ip = "172.28.128.5"
+  public_ip = "10.10.10.118"
+  users = "==all_developers=="
+
+[[machines]]
+  name = 'staging-web-2'
+  private_ip = "172.28.128.5"
+  public_ip = "10.10.10.118"
+  tags = ['development', 'web']
+  users = "==all_developers=="
+
+[[machines]]
+  name = 'staging-worker-1'
+  private_ip = "172.28.128.5"
+  public_ip = "10.10.10.118"
+  users = "==all_developers=="
+
+[[machines]]
+  name = 'staging-pg'
+  private_ip = "172.28.128.5"
+  public_ip = "10.10.10.118"
+  users = "==all_developers=="
+
+[[machines]]
+  name = 'staging-mc'
+  private_ip = "172.28.128.5"
+  public_ip = "10.10.10.118"
+  users = "==all_developers=="
+
+[[machines]]
+  name = 'prod-lb'
+  private_ip = ""
+  public_ip = ""
+  users = "==lead_developers=="
+

@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+#/bin/bash --rcfile <(echo '. ~/.bashrc; exec pvc alpha build --cloud_manager_override=local_cloud.pvcglue.toml')
+~/.bashrc
+pvc alpha build --cloud_manager_override=local_cloud.pvcglue.toml

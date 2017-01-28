@@ -43,21 +43,26 @@ gem 'jbuilder', '~> 2.0'
 gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'thin'
-gem 'resque', :require => "resque/server"
+gem 'resque', :require => 'resque/server'
 
 gem 'whenever'
 gem 'delayed_job_active_record'
-gem "delayed_job_web"
+gem 'delayed_job_web'
 gem 'rack-proxy'
 gem 'httparty'
 
+gem 'toml-rb', '~> 0.3'
+
+gem 'awesome_print'
+gem 'hashie'
 # to use locally committed gem, use `bundle config local.pvcglue ~/projects/pvcglue`
 # and `bundle config --delete local.pvcglue` to restore using remote repo
 # See http://ryanbigg.com/2013/08/bundler-local-paths/
 # and http://bundler.io/v1.3/bundle_config.html
 
 # gem 'pvcglue', "~> 0.1.22", :group => :development
-gem 'pvcglue', '~> 0.1.26', :github => 'talyric/pvcglue', :branch => 'master', :group => :development
+gem 'pvcglue', '~> 0.9.00', :github => 'talyric/pvcglue', :branch => 'u1604', :group => :development
+# gem 'pvcglue', '~> 0.1.26', :github => 'talyric/pvcglue', :branch => 'master', :group => :development
 # gem 'pvcglue', :path => "c:/Sites/pvcglue"
 gem 'pvcglue_dbutils', '~> 0.5.3'
 # gem 'pvcglue_dbutils', "~> 0.5.2", :github => 'talyric/pvcglue_dbutils', :branch => 'master' # must be available in all environments
