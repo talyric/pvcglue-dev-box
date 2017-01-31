@@ -200,8 +200,6 @@
 
 [[machines]]
   name = 'staging-lb'
-  public_ip = '138.68.3.239'
-  private_ip = '10.138.32.145'
   users = "==all_developers=="
 
 [[machines]]
