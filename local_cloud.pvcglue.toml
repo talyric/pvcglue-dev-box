@@ -200,6 +200,9 @@
 
 [[machines]]
   name = 'staging-lb'
+  public_ip = '138.68.224.198'
+  private_ip = '10.138.64.120'
+  cloud_id = '38697518'
   users = "==all_developers=="
 
 [[machines]]

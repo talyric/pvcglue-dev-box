@@ -40,7 +40,7 @@ gem 'jbuilder', '~> 2.0'
 # gem 'debugger', group: [:development, :test]
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin]
+# gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'thin'
 gem 'resque', :require => 'resque/server'
@@ -50,8 +50,6 @@ gem 'delayed_job_active_record'
 gem 'delayed_job_web'
 gem 'rack-proxy'
 gem 'httparty'
-
-gem 'toml-rb', '~> 0.3'
 
 gem 'awesome_print'
 gem 'hashie'
