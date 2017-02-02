@@ -71,19 +71,21 @@
 
 [[users]]
   name = 'Andrew'
-  [[users.public_keys]]
-    key_1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
-    key_2 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+  [users.public_keys]
+    key_1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local1"
+    key_2 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local2"
 
+[[users]]
   name = 'Rob'
-  [[users.public_keys]]
-    key_1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
-    key_2 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+  [users.public_keys]
+    key_1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local3"
+    key_2 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local4"
 
+[[users]]
   name = 'Bob'
-  [[users.public_keys]]
-    key_1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
-    key_2 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local"
+  [users.public_keys]
+    key_1 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local5"
+    key_2 = "ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEAukcsywKGyQ8m/Lft7nLREHTvALDPtEPijIlGRw0He9iHGBS4OkOQ40gLgKOB4TgaDpYocsfIoi9hBpPuxcOoe0IcFrVeICFpnOb2EngptMRvJAJEgKP2iOThynS/+UOMSmRRESbHcPVZ60ZJiuOvvPZlUY9VmV97CK8HEmOwiB72F5XtbbYBFtTgnpCtFzEzuXcfJC2Qxd9v0Elv9yHvZKLJDaSWhFcPL+/AGDTSy3kzxDS2PdzqAfJoiU3uhiyzzg8fRXVwchaVVbafJQI+wuf/dQ+9ejQfMBvvIm/5tBWS+xqBYsqmeVrkFqHm2q+1vrQLzB1alCj000OPwX1fWQ== andrewl@iDrew.local6"
 
 [groups]
   lead_developers = ['Andrew']
@@ -93,6 +95,7 @@
 
 [[projects]]
   name = "pvcglue_dev_box"
+  user_name_base = "dev_box"
   repo_url = "git@github.com:talyric/pvcglue-dev-box.git"
   excluded_db_tables = ["versions"]
 
@@ -150,12 +153,18 @@
   [[projects.stages]]
     name = 'beta'
     db_rebuild = true
-    domains = ["sub.example.com"]
+    domains = ["beta.lyriccode.com"]
     ssl = "none"
 
     [[projects.stages.stack]]
       role = 'lb'
       machine_name = '==staging-lb=='
+
+    [[projects.stages.stack]]
+      role = 'web'
+      role_index = 1
+      machine_name = '==staging-web-1=='
+
 
 
 [cloud_provider]
@@ -200,15 +209,18 @@
 
 [[machines]]
   name = 'staging-lb'
-  public_ip = '138.68.224.198'
-  private_ip = '10.138.64.120'
-  cloud_id = '38697518'
+  public_ip = '138.68.232.44'
+  private_ip = '10.138.192.72'
+  cloud_id = '38880927'
+  root_users = "==lead_developers=="
   users = "==all_developers=="
 
 [[machines]]
   name = 'staging-web-1'
-  private_ip = "172.28.128.5"
-  public_ip = "10.10.10.118"
+  public_ip = '138.68.232.90'
+  private_ip = '10.138.192.111'
+  cloud_id = '38880930'
+  root_users = "==lead_developers=="
   users = "==all_developers=="
 
 [[machines]]
