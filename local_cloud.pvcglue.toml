@@ -167,9 +167,24 @@
 
 
 
+[[projects]]
+  name = "pvcglue_manager"
+  user_name_base = "pvc"
+  time_zone = "America/Los_Angeles"
+
+  [[projects.stages]]
+    name = 'manager'
+    domains = ["manager.example.com"]
+
+    [[projects.stages.stack]]
+      role = 'manager'
+      machine_name = '==pvc-manager=='
+
+
 [cloud_provider]
   name = 'digital-ocean'
-  image = '21669205' # Ubuntu 16.04.1 x64
+#  image = '21669205' # Ubuntu 16.04.1 x64
+  image = 'ubuntu-16-04-x64'
 
   #region = 'nyc1' # New York 1
   #region = 'sfo1' # San Francisco 1
@@ -208,18 +223,26 @@
     #"Keith Ward" =                      "1f:28:60:4d:3d:09:05:8e:dd:66:34:95:10:5a:fe:e4"
 
 [[machines]]
+  name = 'pvc-manager'
+  public_ip = '138.197.197.98'
+  private_ip = '10.138.224.255'
+  cloud_id = '39426372'
+  root_users = "==lead_developers=="
+  users = "==all_developers=="
+
+[[machines]]
   name = 'staging-lb'
-  public_ip = '138.68.232.44'
-  private_ip = '10.138.192.72'
-  cloud_id = '38880927'
+  public_ip = '138.68.228.58'
+  private_ip = '10.138.32.107'
+  cloud_id = '39216329'
   root_users = "==lead_developers=="
   users = "==all_developers=="
 
 [[machines]]
   name = 'staging-web-1'
-  public_ip = '138.68.232.90'
-  private_ip = '10.138.192.111'
-  cloud_id = '38880930'
+  public_ip = '138.68.228.59'
+  private_ip = '10.138.32.108'
+  cloud_id = '39216333'
   root_users = "==lead_developers=="
   users = "==all_developers=="
 
