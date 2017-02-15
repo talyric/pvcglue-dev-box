@@ -1,0 +1,29 @@
+# Used to control the all of the workers that depend on it.
+# Allows workers to be started/stopped without needing root, using the web interface
+#
+#  Example
+#    curl http://localhost:2812/pvcglue_dev_box_local_control -d "action=start"
+#
+
+check file pvcglue_dev_box_beta_worker_control with path /home/dev_box-beta/www/pvcglue_dev_box/beta/shared/worker_control
+  # this is a "no-op" so that the default monit actions do not execute
+  if does not exist then exec "/bin/true" else if succeeded then exec "/bin/true"
+
+  check process pvcglue_dev_box_beta_delayed_job_0
+  with pidfile /home/dev_box-beta/www/pvcglue_dev_box/beta/shared/pids/delayed_job.0.pid
+  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /home/dev_box-beta/www/pvcglue_dev_box/beta/current && RAILS_ENV=beta /home/dev_box-beta/www/pvcglue_dev_box/beta/current/bin/delayed_job start -i 0 --pid-dir=/home/dev_box-beta/www/pvcglue_dev_box/beta/shared/pids'" as uid deploy and gid deploy
+  stop program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /home/dev_box-beta/www/pvcglue_dev_box/beta/current && RAILS_ENV=beta /home/dev_box-beta/www/pvcglue_dev_box/beta/current/bin/delayed_job stop -i 0 --pid-dir=/home/dev_box-beta/www/pvcglue_dev_box/beta/shared/pids'" as uid deploy and gid deploy
+  group pvcglue_dev_box_beta_delayed_job
+  group pvcglue_dev_box_beta_workers
+  depends on pvcglue_dev_box_beta_worker_control
+
+
+# Based on https://github.com/resque/resque/blob/master/examples/monit/resque.monit
+check process pvcglue_dev_box_beta_resque_worker_0
+  with pidfile /home/dev_box-beta/www/pvcglue_dev_box/beta/shared/pids/resque_worker.0.pid
+  start program = "/home/deploy/.rvm/bin/rvm-shell -c 'cd /home/dev_box-beta/www/pvcglue_dev_box/beta/current && nohup bundle exec rake environment resque:work RAILS_ENV=beta QUEUE=* VERBOSE=1 PIDFILE=/home/dev_box-beta/www/pvcglue_dev_box/beta/shared/pids/resque_worker.0.pid >> log/resque_worker.log 2>&1'" as uid deploy and gid deploy
+  stop program = "/bin/sh -c 'kill -9 $(cat /home/dev_box-beta/www/pvcglue_dev_box/beta/shared/pids/resque_worker.0.pid) && rm -f /home/dev_box-beta/www/pvcglue_dev_box/beta/shared/pids/resque_worker.0.pid; exit 0;'" as uid deploy and gid deploy
+  group pvcglue_dev_box_beta_resque
+  group pvcglue_dev_box_beta_workers
+  depends on pvcglue_dev_box_beta_worker_control
+

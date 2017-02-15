@@ -5,7 +5,7 @@ set :repo_url, 'git@github.com:talyric/pvcglue-dev-box.git'
 
 set :branch, proc { `git rev-parse --abbrev-ref HEAD`.chomp }
 
-set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets}
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets }
 
 set :bundle_flags, '--deployment' # Remove the `--quiet` flag
 
@@ -27,7 +27,7 @@ namespace :deploy do
   desc 'Stop the workers'
   task :stop_workers do
     on roles(:app) do
-      execute :'curl -sS http://localhost:2812/pvcglue_dev_box_vmtest_worker_control -d "action=stop"'
+      execute ('curl -sS http://localhost:2812/pvcglue_dev_box_'+fetch(:stage).to_s+'_worker_control -d "action=stop"').to_sym
     end
   end
 
@@ -36,7 +36,7 @@ namespace :deploy do
     on roles(:app) do
       execute :'curl -sS http://localhost:2812/monit_reload -d "action=restart"'
       execute :'sleep 5' # must wait for reload
-      execute :'curl -sS http://localhost:2812/pvcglue_dev_box_vmtest_worker_control -d "action=start"'
+      execute ('curl -sS http://localhost:2812/pvcglue_dev_box_'+fetch(:stage).to_s+'_worker_control -d "action=start"').to_sym
     end
   end
 
@@ -45,12 +45,12 @@ namespace :deploy do
     on roles(:app) do
       execute :'curl -sS http://localhost:2812/monit_reload -d "action=restart"'
       execute :'sleep 5' # must wait for reload
-      execute :'curl -sS http://localhost:2812/pvcglue_dev_box_vmtest_worker_control -d "action=restart"'
+      execute ('curl -sS http://localhost:2812/pvcglue_dev_box_'+fetch(:stage).to_s+'_worker_control -d "action=restart"').to_sym
     end
   end
 
-  after :started, :stop_workers
-  after :publishing, :start_workers
+  # after :started, :stop_workers
+  # after :publishing, :start_workers
 
   # def args
   #   fetch(:delayed_job_args, "")
